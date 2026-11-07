@@ -22,7 +22,9 @@ st.title("Ask Chatbot!")
 # Streamlit Cache ka use karke Vectorstore load karein taaki app fast chale
 @st.cache_resource(show_spinner="Running get_vectorstore().")
 def get_vectorstore():
-    vector_store_path = "vectorstore/db"
+    # vector_store_path = "vectorstore/db"
+    DB_FAISS_PATH = os.path.join("vectorstore", "db")
+    vector_store_path = DB_FAISS_PATH
     embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vector_store = FAISS.load_local(
         vector_store_path, 
